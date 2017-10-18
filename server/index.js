@@ -3,24 +3,11 @@ const { readFile } = require('fs')
 const { promisify } = require('util')
 const Koa = require('koa')
 const koaBody = require('koa-bodyparser')
-const Router = require('koa-router')
 
+const router = require('./routes')
 require('./db')
-const { save, find } = require('./lesson')
-
-const router = new Router()
-router.get('/save', async (ctx) => {
-  const value = await save()
-  ctx.body = value
-})
-
-router.get('/find', async (ctx) => {
-  const value = await find()
-  ctx.body = value
-})
 
 const app = new Koa()
-
 app
   .use(koaBody())
   .use(router.routes())

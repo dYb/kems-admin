@@ -3,23 +3,14 @@ const mongoose = require('mongoose')
 const { Schema } = mongoose
 const schema = new Schema({
   name: String,
-  price: Number,
-  amount: Number,
-  status: Number,
-  cover: String,
-  digest: String,
-  level: Number,
-  city: String,
-  createTime: { type: Date, default: Date.now },
-  shop: {
-    id: {
-      type: Schema.Types.ObjectId,
-      required: [true, '必须选择商户']
-    },
+  manager: String,
+  managerTel: String,
+  shops: [{
+    id: Schema.Types.ObjectId,
     name: String
-  },
-  expires: Date
+  }]
 })
+
 schema.virtual('id').get(function () {
   return this._id.toHexString()
 })
@@ -33,4 +24,4 @@ schema.set('toJSON', {
     /* eslint-enable no-param-reassign */
   }
 })
-module.exports = mongoose.model('Lesson', schema)
+module.exports = mongoose.model('Group', schema)

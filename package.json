@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest && exit",
+    "test": "clear && jest && exit 1",
     "webpack": "cross-env NODE_ENV=development BABEL_ENV=browser webpack-dev-server --config webpack.config.js",
     "server": "cross-env NODE_ENV=development nodemon server/index.js",
     "start": "concurrently \"npm run server\" \"npm run webpack\"",
