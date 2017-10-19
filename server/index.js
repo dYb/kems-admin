@@ -2,14 +2,12 @@ const { resolve } = require('path')
 const { readFile } = require('fs')
 const { promisify } = require('util')
 const Koa = require('koa')
-const koaBody = require('koa-bodyparser')
 
 const router = require('./routes')
 require('./db')
 
 const app = new Koa()
 app
-  .use(koaBody())
   .use(router.routes())
   .use(router.allowedMethods())
 
