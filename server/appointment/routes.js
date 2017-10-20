@@ -1,16 +1,15 @@
 const Router = require('koa-router')
-const bodyParser = require('koa-body')
-const customerAction = require('./index')
+const appointmentAction = require('./index')
 
 const router = new Router()
-router.get('/customer/:id', async (ctx) => {
-  const customerId = ctx.params.id
+router.get('/appointment/:id', async (ctx) => {
+  const appointmentId = ctx.params.id
 
-  ctx.body = await customerAction.findOne(customerId)
+  ctx.body = await appointmentAction.findOne(appointmentId)
 })
-router.get('/customer', async (ctx) => {
+router.get('/appointment', async (ctx) => {
   try {
-    ctx.body = await customerAction.findAll(ctx.query)
+    ctx.body = await appointmentAction.findAll(ctx.query)
   } catch (err) {
     ctx.body = {
       status: 'fail',
@@ -18,13 +17,12 @@ router.get('/customer', async (ctx) => {
     }
   }
 })
-router.post('/customer', bodyParser({ multipart: true }), async (ctx) => {
+router.post('/appointment', async (ctx) => {
   try {
-    const customer = await customerAction.save(ctx.request.body.fields)
+    await appointmentAction.save(ctx.request.body)
     ctx.body = {
       status: 'success',
-      message: '创建成功',
-      data: customer
+      message: '创建成功'
     }
   } catch (err) {
     ctx.body = {
@@ -34,9 +32,9 @@ router.post('/customer', bodyParser({ multipart: true }), async (ctx) => {
   }
 })
 
-router.put('/customer', bodyParser({ multipart: true }), async (ctx) => {
+router.put('/appointment', async (ctx) => {
   try {
-    await customerAction.update(ctx.request.body)
+    await appointmentAction.update(ctx.request.body)
     ctx.body = {
       status: 'success',
       message: '修改成功'
@@ -50,9 +48,9 @@ router.put('/customer', bodyParser({ multipart: true }), async (ctx) => {
 })
 
 
-router.del('/customer', async (ctx) => {
+router.del('/appointment', async (ctx) => {
   try {
-    await customerAction.remove(ctx.query.id)
+    await appointmentAction.remove(ctx.query.id)
     ctx.body = {
       status: 'success',
       message: '删除成功'

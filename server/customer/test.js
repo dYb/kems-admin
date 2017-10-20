@@ -1,7 +1,7 @@
 const { findAll, save, update, findOne, remove } = require('./index')
 const db = require('../db')
 
-describe.only('Customers', () => {
+describe.skip('Customers', () => {
   const customerData = {
     name: 'ybduan',
     shopId: '59e74f26ac379e42e409d0d9'

@@ -2,23 +2,11 @@ const mongoose = require('mongoose')
 
 const { Schema } = mongoose
 const schema = new Schema({
-  name: String,
-  price: Number,
-  amount: Number,
-  status: Number,
-  cover: String,
-  digest: String,
-  level: Number,
-  city: String,
-  createTime: { type: Date, default: Date.now },
-  shop: {
-    id: {
-      type: Schema.Types.ObjectId,
-      required: [true, '必须选择商户']
-    },
-    name: String
-  },
-  expiry: Number
+  customerId: Schema.Types.ObjectId,
+  lessonId: Schema.Types.ObjectId,
+  shopId: Schema.Types.ObjectId,
+  date: Number,
+  time: Number
 })
 schema.virtual('id').get(function () {
   return this._id.toHexString()
@@ -33,4 +21,4 @@ schema.set('toJSON', {
     /* eslint-enable no-param-reassign */
   }
 })
-module.exports = mongoose.model('Lesson', schema)
+module.exports = mongoose.model('Appointment', schema)

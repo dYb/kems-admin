@@ -18,7 +18,7 @@ const schema = new Schema({
   remainedLessons: Number,
   lastAppointment: Date,
   lastTraining: Date,
-  registerTime: { type: Date, default: Date.now },
+  registerTime: { type: Number, default: Date.now },
   shopId: {
     type: Schema.Types.ObjectId,
     required: [true, '顾客必须选择门店']

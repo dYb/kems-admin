@@ -1,7 +1,7 @@
 const { findAll, save, update, findOne, remove } = require('./index')
 const db = require('../db')
 
-describe('Lessons', () => {
+describe.skip('Lessons', () => {
   beforeAll(() => {
     if (db.collections.lessons) {
       return db.collections.lessons.drop()

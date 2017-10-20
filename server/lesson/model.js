@@ -10,7 +10,7 @@ const schema = new Schema({
   digest: String,
   level: Number,
   city: String,
-  createTime: { type: Date, default: Date.now },
+  createTime: { type: Number, default: Date.now },
   shop: {
     id: {
       type: Schema.Types.ObjectId,

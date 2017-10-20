@@ -24,7 +24,7 @@ exports.findAll = async ({
     query2 = query2.where('shopId').equals(shopId)
   }
   const list = await query1
-    .where('createTime').gt(startTime).lt(endTime)
+    .where('registerTime').gt(startTime).lt(endTime)
     .skip((page - 1) * size)
     .limit(+size)
   const total = await query2
