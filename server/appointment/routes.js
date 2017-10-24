@@ -4,7 +4,6 @@ const appointmentAction = require('./index')
 const router = new Router()
 router.get('/appointment/:id', async (ctx) => {
   const appointmentId = ctx.params.id
-
   ctx.body = await appointmentAction.findOne(appointmentId)
 })
 router.get('/appointment', async (ctx) => {

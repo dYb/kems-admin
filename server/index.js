@@ -4,7 +4,7 @@ const { promisify } = require('util')
 const Koa = require('koa')
 
 const router = require('./routes')
-require('./db')
+// require('./db')
 
 const app = new Koa()
 app
